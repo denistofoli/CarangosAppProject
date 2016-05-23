@@ -1,6 +1,10 @@
 package br.com.caelum.fj59.carangos.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,7 +21,7 @@ import br.com.caelum.fj59.carangos.navegacao.EstadoMainActivity;
 import br.com.caelum.fj59.carangos.tasks.BuscaMaisPublicacoesDelegate;
 import br.com.caelum.fj59.carangos.tasks.BuscaMaisPublicacoesTask;
 
-public class MainActivity extends BaseActivity implements BuscaMaisPublicacoesDelegate{
+public class MainActivity extends ActionBarActivity implements BuscaMaisPublicacoesDelegate{
     private ListView listView;
     private PublicacaoAdapter adapter;
     private EstadoMainActivity estado;
@@ -95,5 +99,18 @@ public class MainActivity extends BaseActivity implements BuscaMaisPublicacoesDe
     protected void onDestroy() {
         super.onDestroy();
         this.evento.desregistra(getCarangosApplication());
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuItem compras = menu.add("Compras");
+        compras.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+        String acaoCustomizada = getResources().getString(R.string.action_compra);
+        Intent intent = new Intent(acaoCustomizada);
+
+        compras.setIntent(intent);
+
+        return true;
     }
 }

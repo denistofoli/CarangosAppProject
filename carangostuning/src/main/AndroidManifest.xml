@@ -1,0 +1,17 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.caelum.fj59.carangostuning">
+
+    <application android:allowBackup="true" android:label="@string/app_name">
+        <activity android:name="br.com.caelum.fj59.carangostuning.Activity.TunningComprasActivity">
+            <intent-filter>
+                <action android:name="br.com.caelum.fj59.carangos.compra.tunning" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+        </activity>
+
+
+
+    </application>
+
+</manifest>

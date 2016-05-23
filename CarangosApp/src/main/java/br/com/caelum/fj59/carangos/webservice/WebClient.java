@@ -1,6 +1,8 @@
 package br.com.caelum.fj59.carangos.webservice;
 
 
+import android.app.Application;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -15,8 +17,8 @@ import br.com.caelum.fj59.carangos.infra.MyServer;
 public class WebClient {
     private final String url;
 
-    public WebClient(String relativeUrl) {
-        this.url = MyServer.uriFor(relativeUrl);
+    public WebClient(String relativeUrl, Application app) {
+        this.url = new MyServer(app).uriFor(relativeUrl);
     }
 
     public String get() {
